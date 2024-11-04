@@ -23,7 +23,7 @@
 
             <!-- grant location container -->
 
-            <div class="grant-location-container">
+            <div class="sub-container grant-location-container">
 
                 <img src="./location.png" alt="location" height="80px" width="80px" loading="lazy">
                 <p>Grant Location Access</p>
@@ -36,62 +36,62 @@
             <form class="form-container" data-searchForm>
                 <input type="text" name="search" id="search" placeholder="Search for city..." data-searchInput>
                 <button class="btn" type="submit">
-                    <img src="./search.jpg" alt="search" height="20px" width="20px">
+                    <img src="./search.png" alt="search" height="40px" width="40px">
                 </button>
             </form>
 
-        </div>
+            <!-- loading screen container -->
 
-        <!-- loading screen container -->
-
-        <div class="loading-container">
-            <img src="./loading.gif" alt="loading...">
-        </div>
-
-        <!-- show the info -->
-         <div class="user-infoContainer">
-
-            <!-- city name and flag -->
-
-            <div class="name">
-                <p  data-cityName></p>
-                <img data-countryIcon>
+            <div class="loading-container sub-container">
+                <img src="./loading.gif" alt="loading...">
+                <p>loading...</p>
+            </div>
+    
+            <!-- show the info -->
+            <div class="user-infoContainer sub-container">
+    
+                <!-- city name and flag -->
+    
+                <div class="name">
+                    <p  data-cityName></p>
+                    <img data-countryIcon>
+                </div>
+    
+                <!-- weather desc -->
+                <p data-weatherDesc></p>
+    
+                <!-- weather icon -->
+                <img data-weatherIcon>
+    
+                <!-- temp -->
+                <p data-temp></p>
+    
+                <div class="parameter-container">
+                    <!-- cards -->
+                     
+                    <div class="parameter">
+                        <img src="./wind.png" alt="wind info">
+                        <p>WindSpeed</p>
+                        <p data-windSpeed></p>
+                    </div>
+    
+                    <div class="parameter">
+                        <img src="./humidity.png" alt="Humidity info">
+                        <p>Humidity</p>
+                        <p data-Humidity></p>
+                    </div>
+    
+                    <div class="parameter">
+                        <img src="./clouds.png" alt="clouds info">
+                        <p>Clouds</p>
+                        <p data-clouds></p>
+                    </div>
+    
+                </div>
+                        
             </div>
 
-            <!-- weather desc -->
-            <p data-weatherDesc></p>
-
-            <!-- weather icon -->
-            <img data-weatherIcon>
-
-            <!-- temp -->
-            <p data-temp></p>
-
-            <div class="parameter-container">
-                <!-- cards -->
-                 
-                <div class="parameter">
-                    <img src="./wind.png" alt="wind info">
-                    <p>WindSpeed</p>
-                    <p data-windSpeed></p>
-                </div>
-
-                <div class="parameter"></div>
-                    <img src="./humidity.png" alt="Humidity info">
-                    <p>Humidity</p>
-                    <p data-Humidity></p>
-                </div>
-
-                <div class="parameter"></div>
-                    <img src="./clouds.png" alt="clouds info">
-                    <p>Clouds</p>
-                    <p data-clouds></p>
-                </div>
-
-            </div>
-                    
-         </div>
-
+        </div>
 
     </div>
     
