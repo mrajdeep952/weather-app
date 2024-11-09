@@ -214,3 +214,27 @@ p[data-temp]{
     border-radius: 100%;
     margin-bottom: 1px;
 }
+
+.showError.active{
+    display: flex;
+}
+
+.showError{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.showError img{
+    height: 300px;
+    width: 300px;
+    border-radius: 0.8rem;
+    margin: 1.5rem 1.5rem;
+}
+
+.showError p{
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+    font-weight: 550;
+}

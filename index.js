@@ -6,6 +6,7 @@ const grantAccessContainer = document.querySelector(".grant-location-container")
 const searchForm = document.querySelector("[data-searchForm]");
 const loadingScreen = document.querySelector(".loading-container");
 const userInfoContainer = document.querySelector(".user-infoContainer");
+const showError = document.querySelector(".showError");
 
 // Initial variables
 let oldTab = userTab;
@@ -23,11 +24,13 @@ function switchTab(newTab) {
             // Hide user info and grant access, show search form
             userInfoContainer.classList.remove("active");
             grantAccessContainer.classList.remove("active");
+            showError.classList.remove('active');
             searchForm.classList.add("active");
         } else {
             // Show "Your Weather" tab and fetch stored weather if available
             searchForm.classList.remove("active");
             userInfoContainer.classList.remove("active");
+            showError.classList.remove('active');
             getfromSessionStorage();
         }
     }
@@ -55,6 +58,7 @@ function getfromSessionStorage() {
 async function fetchUserWeatherInfo(coordinates) {
     const { lat, lon } = coordinates;
     // Hide grant access container and show loading screen
+    showError.classList.remove('active');
     grantAccessContainer.classList.remove("active");
     loadingScreen.classList.add("active");
 
@@ -68,9 +72,18 @@ async function fetchUserWeatherInfo(coordinates) {
         userInfoContainer.classList.add("active");
         renderWeatherInfo(data);
     } catch (err) {
+        showError.classList.add('active');
         loadingScreen.classList.remove("active");
         console.error("Failed to fetch user weather info:", err);
     }
+};
+
+function showErrorPage(){
+
+    loadingScreen.classList.remove('active');
+    userInfoContainer.classList.remove('active');
+    showError.classList.add('active');
+
 }
 
 function renderWeatherInfo(weatherInfo) {
@@ -85,6 +98,10 @@ function renderWeatherInfo(weatherInfo) {
     const clouds = document.querySelector("[data-clouds]");
 
     // Update UI elements
+    if(weatherInfo?.cod === '404'){
+        showErrorPage();
+        return;
+    }
     cityName.innerText = weatherInfo?.name;
     countryIcon.src = `https://flagcdn.com/144x108/${weatherInfo?.sys?.country.toLowerCase()}.png`;
     desc.innerText = weatherInfo?.weather?.[0]?.description;
@@ -126,6 +143,7 @@ searchForm.addEventListener("submit", (e) => {
 
 async function fetchSearchWeatherInfo(city) {
     loadingScreen.classList.add("active");
+    showError.classList.remove('active');
     userInfoContainer.classList.remove("active");
     grantAccessContainer.classList.remove("active");
 
@@ -137,8 +155,10 @@ async function fetchSearchWeatherInfo(city) {
 
         loadingScreen.classList.remove("active");
         userInfoContainer.classList.add("active");
+        console.log(data);
         renderWeatherInfo(data);
     } catch (err) {
+        // showError.classList.remove('active');
         loadingScreen.classList.remove("active");
         console.error("Failed to fetch search weather info:", err);
     }
